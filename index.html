@@ -1,0 +1,148 @@
+﻿<!doctype html>
+
+<head>
+    <title>Inflación ugis</title>
+</head>
+
+<body>
+
+<svg id="visualisation" width="1000" height="500"></svg>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+var lineData = [{
+  y: "Los 90's",
+  x: 1.99
+}, {
+  y: "Los 90's promo",
+  x: 1.59
+}, {
+  y: "Los 90's promo 2",
+  x: 1.79
+}, {
+  y: "Diciembre 2000",
+  x: 2
+}, {
+  y: "Enero 2004",
+  x: 3.5
+}, {
+  y: "Diciembre 2005",
+  x: 4.8
+}, {
+  y: "Mayo 2007",
+  x: 6.8
+}, {
+  y: "Marzo 2008",
+  x: 8
+}, {
+  y: "Julio 2008",
+  x: 10
+}, {
+  y: "Marzo 2009",
+  x: 12
+}, {
+  y: "Junio 2010",
+  x: 14
+}, {
+  y: "Julio 2010",
+  x: 16
+}, {
+  y: "Mayo 2011",
+  x: 18
+}, {
+  y: "Agosto 2011",
+  x: 20
+}, {
+  y: "Junio 2012",
+  x: 22
+}, {
+  y: "Enero 2013",
+  x: 24
+}, {
+  y: "Abril 2013",
+  x: 26
+}, {
+  y: "Junio 2013",
+  x: 28
+}, {
+  y: "Octubre 2013",
+  x: 30
+}, {
+  y: "Enero 2014",
+  x: 32
+}, {
+  y: "Marzo 2014",
+  x: 34
+}, {
+  y: "Abril 2014",
+  x: 35
+}, {
+  y: "Mayo 2014",
+  x: 37
+}, {
+  y: "Agosto 2014",
+  x: 38
+}, {
+  y: "Octubre 2014",
+  x: 30
+}, {
+  y: "Enero 2015",
+  x: 41
+}, {
+  y: "Marzo 2015",
+  x: 42
+}, {
+  y: "Mayo 2015",
+  x: 44
+}, {
+  y: "Junio 2015",
+  x: 46
+}, {
+  y: "Junio 2015 - 2",
+  x: 49
+}, {
+  y: "Agosto 2015",
+  x: 49.99
+}];
+
+var vis = d3.select('#visualisation'),
+    WIDTH = 1000,
+    HEIGHT = 500,
+    MARGINS = {
+      top: 20,
+      right: 20,
+      bottom: 20,
+      left: 50
+    },
+    xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(lineData, function(d) {
+      return d.x;
+    }), d3.max(lineData, function(d) {
+      return d.x;
+    })]),
+    yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(lineData, function(d) {
+      return d.y;
+    }), d3.max(lineData, function(d) {
+      return d.y;
+    })]),
+    xAxis = d3.svg.axis()
+      .scale(xRange)
+      .tickSize(5)
+      .tickSubdivide(true),
+    yAxis = d3.svg.axis()
+      .scale(yRange)
+      .tickSize(5)
+      .orient('left')
+      .tickSubdivide(true);
+
+vis.append('svg:g')
+  .attr('class', 'x axis')
+  .attr('transform', 'translate(0,' + (HEIGHT - MARGINS.bottom) + ')')
+  .call(xAxis);
+
+vis.append('svg:g')
+  .attr('class', 'y axis')
+  .attr('transform', 'translate(' + (MARGINS.left) + ',0)')
+  .call(yAxis);
+</script>
+</body>
